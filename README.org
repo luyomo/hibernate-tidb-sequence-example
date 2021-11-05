@@ -18,8 +18,9 @@ MySQL [hibernate_seq_on_tidb]> CREATE SEQUENCE userid_seq  INCREMENT 1 MINVALUE 
 user@workstation:/tmp$ git clone https://github.com/luyomo/hibernate-tidb-sequence-example.git
 user@workstation:/tmp$ cd hibernate-tidb-sequence-example
 #+END_SRC
-** Replace the DB conntion in the config file src/main/resources/hibernate.properties
+** Replace the DB conntion in the config file [[https://github.com/luyomo/hibernate-tidb-sequence-example/blob/main/src/main/resources/hibernate.properties][hibernate.properties]]
  #+BEGIN_SRC
+user@workstation:/tmp/hibernate-tidb-sequence-example$ more src/main/resources/hibernate.properties
  hibernate.dialect org.hibernate.dialect.TiDB4Dialect
  hibernate.connection.driver_class com.mysql.jdbc.Driver
  hibernate.connection.url jdbc:mysql://127.0.0.1:4000/hibernate_example      <<- Replace the connection string(The name in this example is hibernate_seq_on_tidb)
