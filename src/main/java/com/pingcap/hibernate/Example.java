@@ -28,6 +28,8 @@ import org.hibernate.query.Query;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Iterator;
@@ -46,7 +48,8 @@ public class Example {
 	public static class User {
 		/** The id. */
 		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
+		@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "userid_seq_name")
+		@SequenceGenerator(name = "userid_seq_name", sequenceName = "userid_seq")
 		private int userId;
 
 		private String name;
@@ -85,7 +88,8 @@ public class Example {
 	public static class Order {
 		/** The order id. */
 		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
+		@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "orderid_seq_name")
+		@SequenceGenerator(name = "orderid_seq_name", sequenceName = "orderid_seq")
 		private int orderId;
 
 		/** The user id related to this order. */
@@ -131,7 +135,7 @@ public class Example {
 	public static void main(String[] args) {
 		Session session = openSession();
 		try {
-			User tom = new User("Tom", Gender.MALE);
+			User tom = new User("Tommas", Gender.MALE);
 			persist(session, tom);
 
 			User jack = new User("Jack", Gender.MALE);
@@ -158,6 +162,7 @@ public class Example {
 			}
 		} finally {
 			session.close();
+			session.getSessionFactory().close();
 		}
 	}
 	

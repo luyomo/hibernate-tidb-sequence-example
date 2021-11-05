@@ -11,6 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.5.7.Final'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.2.11.Final'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+        implementation files('libs/hibernate-tidb4-dialect-5.2.11.Final.jar')
 }
